@@ -1,6 +1,8 @@
 /* eslint-disable */
 
 import React, { useEffect, useState } from 'react';
+import { FAB } from 'react-native-elements';
+import { IconButtonProps } from 'react-native-vector-icons/Icon';
 import { ScrollView, StyleSheet, Text, View, Image, FlatList } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackPramList } from '../App';
@@ -65,9 +67,22 @@ const Details: React.FC<DetailsProps> = ({ route, navigation }: DetailsProps) =>
     setActiveTab(newTab);
   };
 
+  const onPressFavorite = () => {
+    console.log("You add", userDetails?.name, "to your favourite")
+    const message = `${userDetails?.name} added to favorite!`
+    Snackbar.show({
+      text: message,
+      duration: Snackbar.LENGTH_SHORT,
+      backgroundColor: '#5cb85c'
+    });
+
+  }
+
+
 
   return (
     <View style={styles.container}>
+      
       {userDetails ? (
         <View style={styles.viewContainer}>
           <Image style={styles.image} source={{ uri: userDetails.avatar_url }} />
@@ -123,6 +138,15 @@ const Details: React.FC<DetailsProps> = ({ route, navigation }: DetailsProps) =>
       ) : (
         <Text>Loading user details...</Text>
       )}
+      <FAB
+      // style={{ width: "100%" }}
+      placement="right"
+      size="large"
+      visible
+      color="#d9534f"
+      onPress={() => onPressFavorite()}
+      icon={{ name: "favorite", color: "#fff" }}
+    />
     </View>
   );
 };

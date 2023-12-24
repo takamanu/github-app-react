@@ -15,6 +15,9 @@ const SearchBarComponent: FC<SearchBarComponentProps> = ({ searchText, onSearchT
   return (
     <SearchBar
       platform="android"
+      style={{
+        fontFamily: 'Nunito-Regular'
+      }}
       onChangeText={onSearchTextChange}
       placeholder="Search name..."
       placeholderTextColor="#888"

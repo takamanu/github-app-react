@@ -49,6 +49,8 @@ const styles = StyleSheet.create({
     container: {
       margin: 8,
       flexDirection: 'row',
+      fontFamily: 'Nunito-Regular',
+
     },
     rowContainer: {
       flexDirection: 'row',
@@ -67,6 +69,8 @@ const styles = StyleSheet.create({
       color: '#000000',
       fontWeight: '600',
       fontSize: 18,
+      fontFamily: 'Nunito-Bold',
+
     },
     ratingContainer: {
       marginTop: 10,
@@ -86,6 +90,7 @@ const styles = StyleSheet.create({
       color: '#fff',
       fontSize: 12,
       fontWeight: '600',
+      fontFamily: 'Nunito-Regular',
     },
     ratingCount: {
       color: '#878787',

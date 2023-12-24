@@ -21,7 +21,6 @@ const Home: React.FC<HomeProps> = ({ navigation }: HomeProps) => {
   const handleSearch = async () => {
     try {
       if (!searchText.trim()) {
-        // If searchText is empty or contains only whitespace
         Snackbar.show({
           text: 'Please enter a name to search',
           duration: Snackbar.LENGTH_SHORT,
@@ -30,20 +29,17 @@ const Home: React.FC<HomeProps> = ({ navigation }: HomeProps) => {
       }
 
       const results = await searchUsers(searchText);
-
-      if (results == Error) {
-        // If searchText is empty or contains only whitespace
-        Snackbar.show({
-          text: 'Github user not found',
-          duration: Snackbar.LENGTH_SHORT,
-        });
-        return;
-      }
       
       // console.log('Search Results:', results);
       setSearchResults(results);
     } catch (error) {
       console.log('Error during GitHub search:', error);
+      Snackbar.show({
+        backgroundColor: '#d9534f',
+        text: 'Github user not found',
+        duration: Snackbar.LENGTH_SHORT,
+      });
+      return;
     }
   };
 
@@ -52,7 +48,7 @@ const Home: React.FC<HomeProps> = ({ navigation }: HomeProps) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <SearchBarComponent
         searchText={searchText}
         onSearchTextChange={(text: string) => setSearchText(text)}
@@ -84,6 +80,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 12,
     backgroundColor: '#FFFFFF',
+    fontFamily: 'Nunito-Regular',
   },
 });
 

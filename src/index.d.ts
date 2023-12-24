@@ -36,8 +36,14 @@ interface UserDetails {
   received_events_url: string;
   name: string;
   bio: string;
-  public_repos: int;
-  public_gists: int;
-  followers: int;
-  following: int;
+  public_repos: number;
+  public_gists: number;
+  followers: number;
+  following: number;
+}
+
+interface UserDetailFollows {
+  id: number
+  login: string
+  avatar_url: string
 }
